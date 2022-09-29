@@ -4,7 +4,7 @@ import './style.css'
 import { getPage } from './getPage';
 import { rocketSvg } from './svgs';
 
-const incrementUrl = 'https://responserocket.com/api/increment';
+const incrementUrl = import.meta.env.VITE_INCREMENT_URL;
 const me = document.querySelector('script[site_key]');
 const siteKey = me.getAttribute('site_key');
 const darkMode = document.body.classList.contains('darkMode') || me.getAttribute('darkMode');
@@ -26,7 +26,6 @@ for (let i = 0; i < responseRocketContainers.length; i++) {
       </button>
     `;
 }
-
 
 const buttons = document.getElementsByClassName('response-rocket-button');
 

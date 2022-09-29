@@ -5,7 +5,7 @@ export function getPage(siteKey)
         siteKey,
     });
 
-    fetch(`https://responserocket.test/api/page?${params}`)
+    fetch(`${import.meta.env.VITE_PAGE_URL}?${params}`)
         .then(response => response.json())
         .then(data => {
             const countElement = document.getElementsByClassName('response-rocket-count');
