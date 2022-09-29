@@ -9,7 +9,7 @@ const me = document.querySelector('script[site_key]');
 const siteKey = me.getAttribute('site_key');
 const darkMode = document.body.classList.contains('darkMode') || me.getAttribute('darkMode');
 
-const responseRocketContainers = document.querySelector('.response-rocket');
+const responseRocketContainers = document.getElementsByClassName('response-rocket');
 
 if (responseRocketContainers.length) {
   for (let i = 0; i < responseRocketContainers.length; i++) {
