@@ -4,20 +4,29 @@ import './style.css'
 import { getPage } from './getPage';
 import { rocketSvg } from './svgs';
 
-const incrementUrl = 'https://responserocket.test/api/increment';
+const incrementUrl = 'https://responserocket.com/api/increment';
 const me = document.querySelector('script[site_key]');
 const siteKey = me.getAttribute('site_key');
 const darkMode = document.body.classList.contains('darkMode') || me.getAttribute('darkMode');
 
-document.querySelector('.response-rocket').innerHTML = `
-  <button
-    type="button"
-    class="response-rocket-button rr-button-reset rr-rounded-full rr-p-4 rr-shadow rr-flex rr-items-center ${darkMode ? 'rr-bg-white rr-text-black' : 'rr-bg-black rr-text-white'}"
-  >
-    ${rocketSvg}
-    <span class="response-rocket-count">0</span>
-  </button>
-`;
+const responseRocketContainers = document.querySelector('.response-rocket');
+
+if (! responseRocketContainers.length) {
+  return;
+}
+
+for (let i = 0; i < responseRocketContainers.length; i++) {
+  responseRocketContainers[i].innerHTML = `
+      <button
+        type="button"
+        class="response-rocket-button rr-button-reset rr-rounded-full rr-p-4 rr-shadow rr-flex rr-items-center ${darkMode ? 'rr-bg-white rr-text-black' : 'rr-bg-black rr-text-white'}"
+      >
+        ${rocketSvg}
+        <span class="response-rocket-count">0</span>
+      </button>
+    `;
+}
+
 
 const buttons = document.getElementsByClassName('response-rocket-button');
 
