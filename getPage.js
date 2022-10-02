@@ -1,4 +1,4 @@
-export function getPage(siteKey, $url)
+export function getPage(siteKey, url)
 {
     const params = new URLSearchParams({
         pathname: window.location.pathname,
