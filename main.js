@@ -61,6 +61,7 @@ if (responseRocketContainers.length) {
   for (let i = 0; i < buttons.length; i ++) {
     buttons[i].addEventListener('click', function () {
       const { hash, pathname } = window.location;
+      const reaction = this.getAttribute('data-reaction');
 
       if (!exceededClickLimit) {
         fetch(url, {
@@ -73,6 +74,7 @@ if (responseRocketContainers.length) {
             siteKey,
             hash,
             pathname,
+            reaction
           })
         })
         .then((response) => response.json())
