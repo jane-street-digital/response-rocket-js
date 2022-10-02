@@ -13,7 +13,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="rr-w-6 rr-h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
 </svg>
-`,n=document.querySelector("script[site_key]"),h=n.getAttribute("site_key"),s=document.body.classList.contains("darkMode")||n.getAttribute("darkMode"),p=document.getElementsByClassName("response-rocket");let u="https://responserocket.app/api/increment";if(n.getAttribute("dev")&&(u="https://responserocket.test/api/increment"),p.length){for(let t=0;t<p.length;t++)p[t].innerHTML=`
+`,n=document.querySelector("script[data-key]"),h=n.getAttribute("data-key"),s=document.body.classList.contains("darkMode")||n.getAttribute("darkMode"),p=document.getElementsByClassName("response-rocket");let u="https://responserocket.app/api/increment";if(n.getAttribute("data-dev")&&(u="https://responserocket.test/api/increment"),p.length){for(let t=0;t<p.length;t++)p[t].innerHTML=`
       <div class="rr-flex rr-justify-center">
         <div class="rr-flex shrink rr-rounded-full rr-py-2 rr-px-4 rr-justify-center rr-shadow ${s?"rr-bg-white rr-text-black":"rr-bg-black rr-text-white"}">
             <button
@@ -50,4 +50,4 @@
             </button>
           </div>
         </div>
-      `;const o=document.getElementsByClassName("response-rocket-button");let c=!1;for(let t=0;t<o.length;t++)o[t].addEventListener("click",function(){const{hash:i,pathname:r}=window.location,w=this.getAttribute("data-reaction");c||fetch(u,{method:"POST",headers:{"Content-Type":"application/json"},mode:"cors",body:JSON.stringify({siteKey:h,hash:i,pathname:r,reaction:w})}).then(e=>e.json()).then(e=>{c=e.exceededClickLimit,e.reactions&&(this.getElementsByTagName("span")[0].innerHTML=e.reactions)}).catch(e=>console.error(e))});let a="https://responserocket.app/api/page";n.getAttribute("dev")&&(a="https://responserocket.test/api/page"),d(h,a)}});
+      `;const o=document.getElementsByClassName("response-rocket-button");let c=!1;for(let t=0;t<o.length;t++)o[t].addEventListener("click",function(){const{hash:i,pathname:r}=window.location,w=this.getAttribute("data-reaction");c||fetch(u,{method:"POST",headers:{"Content-Type":"application/json"},mode:"cors",body:JSON.stringify({siteKey:h,hash:i,pathname:r,reaction:w})}).then(e=>e.json()).then(e=>{c=e.exceededClickLimit,e.reactions&&(this.getElementsByTagName("span")[0].innerHTML=e.reactions)}).catch(e=>console.error(e))});let a="https://responserocket.app/api/page";n.getAttribute("data-dev")&&(a="https://responserocket.test/api/page"),d(h,a)}});

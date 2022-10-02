@@ -4,13 +4,13 @@ import './style.css'
 import { getPage } from './getPage';
 import { rocketSvg, smileSvg, heartSvg, thumbsUpSvg } from './svgs';
 
-const me = document.querySelector('script[site_key]');
-const siteKey = me.getAttribute('site_key');
+const me = document.querySelector('script[data-key]');
+const siteKey = me.getAttribute('data-key');
 const darkMode = document.body.classList.contains('darkMode') || me.getAttribute('darkMode');
 const responseRocketContainers = document.getElementsByClassName('response-rocket');
 
 let url = 'https://responserocket.app/api/increment';
-if (me.getAttribute('dev')) {
+if (me.getAttribute('data-dev')) {
   url = 'https://responserocket.test/api/increment';
 }
 
@@ -90,7 +90,7 @@ if (responseRocketContainers.length) {
   }
 
   let pageUrl = 'https://responserocket.app/api/page';
-  if (me.getAttribute('dev')) {
+  if (me.getAttribute('data-dev')) {
       pageUrl = 'https://responserocket.test/api/page';
   }
 
