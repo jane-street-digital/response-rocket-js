@@ -5,8 +5,8 @@ import { getPage } from './getPage';
 import { rocketSvg, smileSvg, heartSvg, thumbsUpSvg } from './svgs';
 
 let url = 'https://responserocket.app/api/increment';
-const dev = import.meta.env.DEV || false;
-if (dev) {
+
+if (import.meta.env.DEV) {
   url = 'https://responserocket.test/api/increment';
 }
 
