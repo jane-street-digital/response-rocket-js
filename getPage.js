@@ -5,7 +5,12 @@ export function getPage(siteKey)
         siteKey,
     });
 
-    fetch(`${import.meta.env.VITE_PAGE_URL}?${params}`)
+    let url = 'https://responserocket.test/api/page';
+    if (process.env.NODE_ENV === 'production') {
+        url = 'https://responserocket.app/api/page';
+    }
+
+    fetch(`${url}?${params}`)
         .then(response => response.json())
         .then(data => {
             const countElement = document.getElementsByClassName('response-rocket-count');
