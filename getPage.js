@@ -1,14 +1,9 @@
-export function getPage(siteKey)
+export function getPage(siteKey, $url)
 {
     const params = new URLSearchParams({
         pathname: window.location.pathname,
         siteKey,
     });
-
-    let url = 'https://responserocket.test/api/page';
-    if (process.env.NODE_ENV === 'production') {
-        url = 'https://responserocket.app/api/page';
-    }
 
     fetch(`${url}?${params}`)
         .then(response => response.json())

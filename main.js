@@ -87,5 +87,10 @@ if (responseRocketContainers.length) {
     });
   }
 
-  getPage(siteKey);
+  let pageUrl = 'https://responserocket.app/api/page';
+  if (me.getAttribute('dev')) {
+      pageUrl = 'https://responserocket.test/api/page';
+  }
+
+  getPage(siteKey, pageUrl);
 }
