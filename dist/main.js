@@ -27,7 +27,7 @@ const u = `
 </svg>
 `;
 let l = "https://responserocket.test/api/increment";
-process.env.NODE_ENV === "production" && (l = "https://responserocket.app/api/increment");
+l = "https://responserocket.app/api/increment";
 const p = document.querySelector("script[site_key]"), i = p.getAttribute("site_key"), c = document.body.classList.contains("darkMode") || p.getAttribute("darkMode"), a = document.getElementsByClassName("response-rocket");
 if (a.length) {
   for (let e = 0; e < a.length; e++)

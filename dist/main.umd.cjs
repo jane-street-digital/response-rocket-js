@@ -13,7 +13,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="rr-w-6 rr-h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
 </svg>
-`;let l="https://responserocket.test/api/increment";process.env.NODE_ENV==="production"&&(l="https://responserocket.app/api/increment");const p=document.querySelector("script[site_key]"),h=p.getAttribute("site_key"),n=document.body.classList.contains("darkMode")||p.getAttribute("darkMode"),i=document.getElementsByClassName("response-rocket");if(i.length){for(let e=0;e<i.length;e++)i[e].innerHTML=`
+`;let l="https://responserocket.test/api/increment";l="https://responserocket.app/api/increment";const p=document.querySelector("script[site_key]"),h=p.getAttribute("site_key"),n=document.body.classList.contains("darkMode")||p.getAttribute("darkMode"),i=document.getElementsByClassName("response-rocket");if(i.length){for(let e=0;e<i.length;e++)i[e].innerHTML=`
       <div class="rr-flex rr-justify-center">
         <div class="rr-flex shrink rr-rounded-full rr-py-2 rr-px-4 rr-justify-center rr-shadow ${n?"rr-bg-white rr-text-black":"rr-bg-black rr-text-white"}">
             <button
