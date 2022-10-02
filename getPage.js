@@ -15,7 +15,9 @@ export function getPage(siteKey)
         .then(data => {
             const countElement = document.getElementsByClassName('response-rocket-count');
             for (let i = 0; i < countElement.length; i++) {
-                countElement[i].innerHTML = data.reactions;
+                if (data.reactions > 0) {
+                    countElement[i].innerHTML = data.reactions;
+                }
             }
         })
         .catch(err => console.error(err));

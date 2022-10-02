@@ -2,7 +2,7 @@
 
 import './style.css'
 import { getPage } from './getPage';
-import { rocketSvg } from './svgs';
+import { rocketSvg, smileSvg, heartSvg, thumbsUpSvg } from './svgs';
 
 let url = 'https://responserocket.test/api/increment';
 if (process.env.NODE_ENV === 'production') {
@@ -17,13 +17,42 @@ const responseRocketContainers = document.getElementsByClassName('response-rocke
 if (responseRocketContainers.length) {
   for (let i = 0; i < responseRocketContainers.length; i++) {
     responseRocketContainers[i].innerHTML = `
-        <button
-          type="button"
-          class="response-rocket-button rr-button-reset rr-rounded-full rr-p-4 rr-shadow rr-flex rr-items-center ${darkMode ? 'rr-bg-white rr-text-black' : 'rr-bg-black rr-text-white'}"
-        >
-          ${rocketSvg}
-          <span class="response-rocket-count"></span>
-        </button>
+      <div class="rr-flex rr-justify-center">
+        <div class="rr-flex shrink rr-rounded-full rr-py-2 rr-px-4 rr-justify-center rr-shadow ${darkMode ? 'rr-bg-white rr-text-black' : 'rr-bg-black rr-text-white'}">
+            <button
+              type="button"
+              class="response-rocket-button rr-button-reset rr-flex rr-items-center"
+              data-reaction="rocket"
+            >
+              ${rocketSvg}
+              <span class="response-rocket-count rr-ml-1">0</span>
+            </button>
+            <button
+              type="button"
+              class="response-rocket-button rr-button-reset rr-ml-4 rr-flex rr-items-center ${darkMode ? 'rr-bg-white rr-text-black' : 'rr-bg-black rr-text-white'}"
+              data-reaction="smile"
+            >
+              ${smileSvg}
+              <span class="response-rocket-count rr-ml-1">0</span>
+            </button>
+            <button
+              type="button"
+              class="response-rocket-button rr-button-reset rr-ml-4 rr-flex rr-items-center ${darkMode ? 'rr-bg-white rr-text-black' : 'rr-bg-black rr-text-white'}"
+              data-reaction="heart"
+            >
+              ${heartSvg}
+              <span class="response-rocket-count rr-ml-1">0</span>
+            </button>
+            <button
+              type="button"
+              class="response-rocket-button rr-button-reset rr-ml-4 rr-flex rr-items-center ${darkMode ? 'rr-bg-white rr-text-black' : 'rr-bg-black rr-text-white'}"
+              data-reaction="thumbsUp"
+            >
+              ${thumbsUpSvg}
+              <span class="response-rocket-count rr-ml-1">0</span>
+            </button>
+          </div>
+        </div>
       `;
   }
 
@@ -49,7 +78,9 @@ if (responseRocketContainers.length) {
         .then((response) => response.json())
         .then((data) => {
           exceededClickLimit = data.exceededClickLimit;
-          this.getElementsByTagName('span')[0].innerHTML = data.reactions
+          if (data.reactions) {
+            this.getElementsByTagName('span')[0].innerHTML = data.reactions
+          }
         })
         .catch((err) => console.error(err));
       }
