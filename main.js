@@ -4,9 +4,10 @@ import './style.css'
 import { getPage } from './getPage';
 import { rocketSvg, smileSvg, heartSvg, thumbsUpSvg } from './svgs';
 
-let url = 'https://responserocket.test/api/increment';
-if (import.meta.env.PROD) {
-    url = 'https://responserocket.app/api/increment';
+let url = 'https://responserocket.app/api/increment';
+const dev = import.meta.env.DEV || false;
+if (dev) {
+  url = 'https://responserocket.test/api/increment';
 }
 
 const me = document.querySelector('script[site_key]');
