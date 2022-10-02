@@ -4,16 +4,15 @@ import './style.css'
 import { getPage } from './getPage';
 import { rocketSvg, smileSvg, heartSvg, thumbsUpSvg } from './svgs';
 
-let url = 'https://responserocket.app/api/increment';
-
-if (import.meta.env.DEV) {
-  url = 'https://responserocket.test/api/increment';
-}
-
 const me = document.querySelector('script[site_key]');
 const siteKey = me.getAttribute('site_key');
 const darkMode = document.body.classList.contains('darkMode') || me.getAttribute('darkMode');
 const responseRocketContainers = document.getElementsByClassName('response-rocket');
+
+let url = 'https://responserocket.app/api/increment';
+if (me.getAttribute('dev')) {
+  url = 'https://responserocket.test/api/increment';
+}
 
 if (responseRocketContainers.length) {
   for (let i = 0; i < responseRocketContainers.length; i++) {
