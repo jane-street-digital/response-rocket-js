@@ -82,6 +82,13 @@ if (responseRocketContainers.length) {
           console.log(data);
           exceededClickLimit = data.exceededClickLimit;
           if (data.reactions) {
+            data.reactions.map((reaction) => {
+              elements = this.querySelectorAll(`.response-rocket-button[data-reaction="${reaction.reaction}"]`);
+              console.log(elements);
+              elements.map((el) => {
+                el.querySelector('span').innerHTML = reaction.click;
+              })
+            });
             this.getElementsByTagName('span')[0].innerHTML = data.reactions
           }
         })
