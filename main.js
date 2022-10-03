@@ -79,6 +79,7 @@ if (responseRocketContainers.length) {
         })
         .then((response) => response.json())
         .then((data) => {
+          console.log(data);
           exceededClickLimit = data.exceededClickLimit;
           if (data.reactions) {
             this.getElementsByTagName('span')[0].innerHTML = data.reactions

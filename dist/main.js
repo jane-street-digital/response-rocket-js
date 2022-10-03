@@ -85,7 +85,7 @@ if (l.length) {
           reaction: u
         })
       }).then((e) => e.json()).then((e) => {
-        n = e.exceededClickLimit, e.reactions && (this.getElementsByTagName("span")[0].innerHTML = e.reactions);
+        console.log(e), n = e.exceededClickLimit, e.reactions && (this.getElementsByTagName("span")[0].innerHTML = e.reactions);
       }).catch((e) => console.error(e));
     });
   let o = "https://responserocket.app/api/page";
