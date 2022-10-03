@@ -5,6 +5,8 @@ import { getPage } from './getPage';
 import { rocketSvg, smileSvg, heartSvg, thumbsUpSvg } from './svgs';
 import Bugsnag from '@bugsnag/browser';
 
+console.log('Reaction Rocket v1.0.7');
+
 Bugsnag.start({ apiKey: 'dfd83c36b883dd3e3efc000c00b1c709' });
 
 const me = document.querySelector('script[data-key]');

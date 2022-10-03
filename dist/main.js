@@ -48,14 +48,14 @@ var ut = { exports: {} };
       return Object.prototype.toString.call(e) === "[object Array]";
     }, M = !{
       toString: null
-    }.propertyIsEnumerable("toString"), A = ["toString", "toLocaleString", "valueOf", "hasOwnProperty", "isPrototypeOf", "propertyIsEnumerable", "constructor"], k = function(e) {
+    }.propertyIsEnumerable("toString"), C = ["toString", "toLocaleString", "valueOf", "hasOwnProperty", "isPrototypeOf", "propertyIsEnumerable", "constructor"], k = function(e) {
       var t = [], n;
       for (n in e)
         Object.prototype.hasOwnProperty.call(e, n) && t.push(n);
       if (!M)
         return t;
-      for (var r = 0, a = A.length; r < a; r++)
-        Object.prototype.hasOwnProperty.call(e, A[r]) && t.push(A[r]);
+      for (var r = 0, a = C.length; r < a; r++)
+        Object.prototype.hasOwnProperty.call(e, C[r]) && t.push(C[r]);
       return t;
     }, I = function(e, t) {
       return e === void 0 && (e = 1), t === void 0 && (t = 1 / 0), function(n) {
@@ -651,7 +651,7 @@ var ut = { exports: {} };
       var r = t[n];
       typeof r == "number" && (e[r] = null, delete t[n]);
     }
-    var R = {
+    var A = {
       add: $e,
       clear: xt,
       merge: wt,
@@ -737,13 +737,13 @@ var ut = { exports: {} };
       }, t.clearMetadata = function(r, a) {
         return D.clear(this._metadata, r, a);
       }, t.addFeatureFlag = function(r, a) {
-        a === void 0 && (a = null), R.add(this._features, this._featuresIndex, r, a);
+        a === void 0 && (a = null), A.add(this._features, this._featuresIndex, r, a);
       }, t.addFeatureFlags = function(r) {
-        R.merge(this._features, r, this._featuresIndex);
+        A.merge(this._features, r, this._featuresIndex);
       }, t.getFeatureFlags = function() {
-        return R.toEventApi(this._features);
+        return A.toEventApi(this._features);
       }, t.clearFeatureFlag = function(r) {
-        R.clear(this._features, this._featuresIndex, r);
+        A.clear(this._features, this._featuresIndex, r);
       }, t.clearFeatureFlags = function() {
         this._features = [], this._featuresIndex = {};
       }, t.getUser = function() {
@@ -830,7 +830,7 @@ var ut = { exports: {} };
       }
     }, B.create = function(e, t, n, r, a, o) {
       a === void 0 && (a = 0);
-      var i = Ce(e, t, r, o), u = i[0], s = i[1], l;
+      var i = Re(e, t, r, o), u = i[0], s = i[1], l;
       try {
         var f = B.getStacktrace(
           u,
@@ -843,7 +843,7 @@ var ut = { exports: {} };
       }
       if (u.name === "InvalidError" && l.addMetadata("" + r, "non-error parameter", Be(e)), u.cause) {
         var g, c = Me(u).slice(1), h = $(c, function(v) {
-          var y = Q(v) && Y(v) ? xe.parse(v) : [], d = Ce(v, !0, "error cause"), p = d[0];
+          var y = Q(v) && Y(v) ? xe.parse(v) : [], d = Re(v, !0, "error cause"), p = d[0];
           return p.name === "InvalidError" && l.addMetadata("error cause", Be(v)), Le(p.name, p.message, B.__type, y);
         });
         (g = l.errors).push.apply(g, h);
@@ -852,7 +852,7 @@ var ut = { exports: {} };
     };
     var Be = function(e) {
       return e === null ? "null" : e === void 0 ? "undefined" : e;
-    }, Ce = function(e, t, n, r) {
+    }, Re = function(e, t, n, r) {
       var a, o = 0, i = function(u) {
         var s = n === "error cause" ? "was" : "received";
         r && r.warn(n + " " + s + ' a non-error: "' + u + '"');
@@ -872,7 +872,7 @@ var ut = { exports: {} };
             a = i("function"), o += 2;
             break;
           case "object":
-            e !== null && Q(e) ? a = e : e !== null && Ct(e) ? (a = new Error(e.message || e.errorMessage), a.name = e.name || e.errorClass, o += 1) : (a = i(e === null ? "null" : "unsupported object"), o += 2);
+            e !== null && Q(e) ? a = e : e !== null && Rt(e) ? (a = new Error(e.message || e.errorMessage), a.name = e.name || e.errorClass, o += 1) : (a = i(e === null ? "null" : "unsupported object"), o += 2);
             break;
           default:
             a = i("nothing"), o += 2;
@@ -886,9 +886,9 @@ var ut = { exports: {} };
       return [a, o];
     };
     B.__type = "browserjs";
-    var Ct = function(e) {
+    var Rt = function(e) {
       return (typeof e.name == "string" || typeof e.errorClass == "string") && (typeof e.message == "string" || typeof e.errorMessage == "string");
-    }, fe = B, At = function(e, t, n) {
+    }, fe = B, Ct = function(e, t, n) {
       var r = 0, a = function() {
         if (r >= e.length)
           return n(null, !0);
@@ -901,7 +901,7 @@ var ut = { exports: {} };
         });
       };
       a();
-    }, Rt = function(e, t, n, r) {
+    }, At = function(e, t, n, r) {
       var a = function(o, i) {
         if (typeof o != "function")
           return i(null);
@@ -930,8 +930,8 @@ var ut = { exports: {} };
           n(s), i(null);
         }
       };
-      At(e, a, r);
-    }, Ae = function(e, t, n, r) {
+      Ct(e, a, r);
+    }, Ce = function(e, t, n, r) {
       for (var a = !1, o = e.slice(); !a && o.length; )
         try {
           a = o.pop()(t) === !1;
@@ -942,9 +942,9 @@ var ut = { exports: {} };
     }, le = function(t, n) {
       var r = "000000000" + t;
       return r.substr(r.length - n);
-    }, Re = typeof window == "object" ? window : self, Pe = 0;
-    for (var Pt in Re)
-      Object.hasOwnProperty.call(Re, Pt) && Pe++;
+    }, Ae = typeof window == "object" ? window : self, Pe = 0;
+    for (var Pt in Ae)
+      Object.hasOwnProperty.call(Ae, Pt) && Pe++;
     var jt = navigator.mimeTypes ? navigator.mimeTypes.length : 0, It = le((jt + navigator.userAgent.length).toString(36) + Pe.toString(36), 4), je = function() {
       return It;
     }, U = 0, de = 4, Z = 36, Ie = Math.pow(Z, de);
@@ -984,18 +984,18 @@ var ut = { exports: {} };
       }, t._track = function(r) {
         this[r._handledState.unhandled ? "_unhandled" : "_handled"] += 1;
       }, e;
-    }(), ge = Ht, qt = R.add, Vt = R.clear, he = R.merge, C = function() {
+    }(), ge = Ht, qt = A.add, Vt = A.clear, he = A.merge, R = function() {
     }, Ut = /* @__PURE__ */ function() {
       function e(n, r, a, o) {
         var i = this;
         r === void 0 && (r = z.schema), a === void 0 && (a = []), this._notifier = o, this._config = {}, this._schema = r, this._delivery = {
-          sendSession: C,
-          sendEvent: C
+          sendSession: R,
+          sendEvent: R
         }, this._logger = {
-          debug: C,
-          info: C,
-          warn: C,
-          error: C
+          debug: R,
+          info: R,
+          warn: R,
+          error: R
         }, this._plugins = {}, this._breadcrumbs = [], this._session = null, this._metadata = {}, this._featuresIndex = {}, this._features = [], this._context = void 0, this._user = {}, this._cbs = {
           e: [],
           s: [],
@@ -1067,7 +1067,7 @@ var ut = { exports: {} };
       }, t.startSession = function() {
         var r = new ge();
         r.app.releaseStage = this._config.releaseStage, r.app.version = this._config.appVersion, r.app.type = this._config.appType, r._user = S({}, this._user);
-        var a = Ae(this._cbs.s, r, "onSession", this._logger);
+        var a = Ce(this._cbs.s, r, "onSession", this._logger);
         return a ? (this._logger.debug("Session not started due to onSession callback"), this) : this._sessionDelegate.startSession(this, r);
       }, t.addOnError = function(r, a) {
         a === void 0 && (a = !1), this._cbs.e[a ? "unshift" : "push"](r);
@@ -1095,7 +1095,7 @@ var ut = { exports: {} };
         return this._sessionDelegate.resumeSession(this);
       }, t.leaveBreadcrumb = function(r, a, o) {
         if (r = typeof r == "string" ? r : "", o = typeof o == "string" && w(T, o) ? o : "manual", a = typeof a == "object" && a !== null ? a : {}, !!r) {
-          var i = new se(r, a, o), u = Ae(this._cbs.b, i, "onBreadcrumb", this._logger);
+          var i = new se(r, a, o), u = Ce(this._cbs.b, i, "onBreadcrumb", this._logger);
           if (u) {
             this._logger.debug("Breadcrumb not attached due to onBreadcrumb callback");
             return;
@@ -1106,12 +1106,12 @@ var ut = { exports: {} };
         var a = this._config.enabledBreadcrumbTypes;
         return a === null || w(a, r);
       }, t.notify = function(r, a, o) {
-        o === void 0 && (o = C);
+        o === void 0 && (o = R);
         var i = fe.create(r, !0, void 0, "notify()", this._depth + 1, this._logger);
         this._notify(i, a, o);
       }, t._notify = function(r, a, o) {
         var i = this;
-        if (o === void 0 && (o = C), r.app = S({}, r.app, {
+        if (o === void 0 && (o = R), r.app = S({}, r.app, {
           releaseStage: this._config.releaseStage,
           version: this._config.appVersion,
           type: this._config.appType
@@ -1120,7 +1120,7 @@ var ut = { exports: {} };
         var u = r.severity, s = function(f) {
           i._logger.error("Error occurred in onError callback, continuing anyway\u2026"), i._logger.error(f);
         }, l = [].concat(this._cbs.e).concat(a);
-        Rt(l, r, s, function(f, g) {
+        At(l, r, s, function(f, g) {
           if (f && s(f), !g)
             return i._logger.debug("Event not sent due to onError callback"), o(null, r);
           i._isBreadcrumbTypeEnabled("error") && e.prototype.leaveBreadcrumb.call(i, r.errors[0].errorClass, {
@@ -1872,6 +1872,7 @@ metadata was removed`
   });
 })(ut);
 const Mr = ut.exports;
+console.log("Reaction Rocket v1.0.7");
 Mr.start({ apiKey: "dfd83c36b883dd3e3efc000c00b1c709" });
 const ne = document.querySelector("script[data-key]"), st = ne.getAttribute("data-key"), re = document.body.classList.contains("darkMode") || ne.getAttribute("darkMode"), we = document.getElementsByClassName("response-rocket");
 let ct = "https://responserocket.app/api/increment";
@@ -1934,10 +1935,10 @@ if (we.length) {
           reaction: x
         })
       }).then((M) => M.json()).then((M) => {
-        q = M.exceededClickLimit, M.reactions && M.reactions.map((A) => {
-          const k = document.querySelectorAll(`.response-rocket-button[data-reaction="${A.reaction}"]`);
+        q = M.exceededClickLimit, M.reactions && M.reactions.map((C) => {
+          const k = document.querySelectorAll(`.response-rocket-button[data-reaction="${C.reaction}"]`);
           for (let I = 0; I < k.length; I++)
-            A.clicks && (k[I].querySelector("span.response-rocket-count").innerHTML = A.clicks);
+            C.clicks && (k[I].querySelector("span.response-rocket-count").innerHTML = C.clicks);
         });
       }).catch((M) => console.error(M));
     });
