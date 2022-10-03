@@ -84,7 +84,9 @@ if (responseRocketContainers.length) {
             data.reactions.map((reaction) => {
               const elements = document.querySelectorAll(`.response-rocket-button[data-reaction="${reaction.reaction}"]`);
               for (let i = 0; i < elements.length; i++) {
-                elements[i].querySelector('span.response-rocket-count').innerHTML = reaction.click;
+                if (reaction.clicks) {
+                  elements[i].querySelector('span.response-rocket-count').innerHTML = reaction.clicks;
+                }
               }
             });
           }
