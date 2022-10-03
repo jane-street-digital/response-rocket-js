@@ -1,9 +1,9 @@
-function k(n, o) {
+function k(o, n) {
   const s = new URLSearchParams({
     pathname: window.location.pathname,
-    siteKey: n
+    siteKey: o
   });
-  fetch(`${o}?${s}`).then((t) => t.json()).then((t) => {
+  fetch(`${n}?${s}`).then((t) => t.json()).then((t) => {
     const c = document.getElementsByClassName("response-rocket-count");
     for (let r = 0; r < c.length; r++)
       t.reactions > 0 && (c[r].innerHTML = t.reactions);
@@ -67,12 +67,12 @@ if (p.length) {
           </div>
         </div>
       `;
-  const n = document.getElementsByClassName("response-rocket-button");
-  let o = !1;
-  for (let t = 0; t < n.length; t++)
-    n[t].addEventListener("click", function() {
+  const o = document.getElementsByClassName("response-rocket-button");
+  let n = !1;
+  for (let t = 0; t < o.length; t++)
+    o[t].addEventListener("click", function() {
       const { hash: c, pathname: r } = window.location, d = this.getAttribute("data-reaction");
-      o || fetch(m, {
+      n || fetch(m, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -85,11 +85,11 @@ if (p.length) {
           reaction: d
         })
       }).then((e) => e.json()).then((e) => {
-        console.log(e), o = e.exceededClickLimit, e.reactions && (e.reactions.map((h) => {
+        console.log(e), n = e.exceededClickLimit, e.reactions && e.reactions.map((h) => {
           elements = document.querySelectorAll(`.response-rocket-button[data-reaction="${h.reaction}"]`), console.log(elements);
           for (let i = 0; i < elements.length; i++)
-            elements[i].querySelector("span").innerHTML = h.click;
-        }), this.getElementsByTagName("span")[0].innerHTML = e.reactions);
+            elements[i].querySelector("span.response-rocket-count").innerHTML = h.click;
+        });
       }).catch((e) => console.error(e));
     });
   let s = "https://responserocket.app/api/page";
