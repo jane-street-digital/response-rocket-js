@@ -1874,7 +1874,7 @@ metadata was removed`
 const Mr = ut.exports;
 console.log("Reaction Rocket v1.0.7");
 Mr.start({ apiKey: "dfd83c36b883dd3e3efc000c00b1c709" });
-const ne = document.querySelector("script[data-key]"), st = ne.getAttribute("data-key"), re = document.body.classList.contains("darkMode") || ne.getAttribute("darkMode"), we = document.getElementsByClassName("response-rocket");
+const ne = document.querySelector("script[data-rocket-key]"), st = ne.getAttribute("data-rocket-key"), re = document.body.classList.contains("darkMode") || ne.getAttribute("darkMode"), we = document.getElementsByClassName("response-rocket");
 let ct = "https://responserocket.app/api/increment";
 ne.getAttribute("data-dev") && (ct = "https://responserocket.test/api/increment");
 if (we.length) {

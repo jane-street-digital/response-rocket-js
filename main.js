@@ -9,8 +9,8 @@ console.log('Reaction Rocket v1.0.7');
 
 Bugsnag.start({ apiKey: 'dfd83c36b883dd3e3efc000c00b1c709' });
 
-const me = document.querySelector('script[data-key]');
-const siteKey = me.getAttribute('data-key');
+const me = document.querySelector('script[data-rocket-key]');
+const siteKey = me.getAttribute('data-rocket-key');
 const darkMode = document.body.classList.contains('darkMode') || me.getAttribute('darkMode');
 const responseRocketContainers = document.getElementsByClassName('response-rocket');
 
