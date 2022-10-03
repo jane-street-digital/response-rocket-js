@@ -4,12 +4,12 @@ function b(s, n) {
     siteKey: s
   });
   fetch(`${n}?${c}`).then((t) => t.json()).then((t) => {
-    t.reactions && t.reactions.map((r) => {
+    console.log(t), t.reactions && (console.log(t.reactions), t.reactions.map((r) => {
       console.log(r);
       const a = document.querySelectorAll(`.response-rocket-button[data-reaction="${r.reaction}"]`);
       for (let o = 0; o < a.length; o++)
         r.clicks && (a[o].querySelector("span.response-rocket-count").innerHTML = r.clicks);
-    });
+    }));
   }).catch((t) => console.error(t));
 }
 const g = `
@@ -27,7 +27,7 @@ const g = `
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="rr-w-6 rr-h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
 </svg>
-`, i = document.querySelector("script[data-key]"), k = i.getAttribute("data-key"), l = document.body.classList.contains("darkMode") || i.getAttribute("darkMode"), h = document.getElementsByClassName("response-rocket");
+`, i = document.querySelector("script[data-key]"), d = i.getAttribute("data-key"), l = document.body.classList.contains("darkMode") || i.getAttribute("darkMode"), h = document.getElementsByClassName("response-rocket");
 let m = "https://responserocket.app/api/increment";
 i.getAttribute("data-dev") && (m = "https://responserocket.test/api/increment");
 if (h.length) {
@@ -82,19 +82,19 @@ if (h.length) {
         },
         mode: "cors",
         body: JSON.stringify({
-          siteKey: k,
+          siteKey: d,
           hash: r,
           pathname: a,
           reaction: o
         })
       }).then((e) => e.json()).then((e) => {
         n = e.exceededClickLimit, e.reactions && e.reactions.map((p) => {
-          const d = document.querySelectorAll(`.response-rocket-button[data-reaction="${p.reaction}"]`);
-          for (let u = 0; u < d.length; u++)
-            p.clicks && (d[u].querySelector("span.response-rocket-count").innerHTML = p.clicks);
+          const k = document.querySelectorAll(`.response-rocket-button[data-reaction="${p.reaction}"]`);
+          for (let u = 0; u < k.length; u++)
+            p.clicks && (k[u].querySelector("span.response-rocket-count").innerHTML = p.clicks);
         });
       }).catch((e) => console.error(e));
     });
   let c = "https://responserocket.app/api/page";
-  i.getAttribute("data-dev") && (c = "https://responserocket.test/api/page"), b(k, c);
+  i.getAttribute("data-dev") && (c = "https://responserocket.test/api/page"), b(d, c);
 }

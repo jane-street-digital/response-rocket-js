@@ -8,7 +8,9 @@ export function getPage(siteKey, url)
     fetch(`${url}?${params}`)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             if (data.reactions) {
+                console.log(data.reactions);
                 data.reactions.map((reaction) => {
                     console.log(reaction);
                   const elements = document.querySelectorAll(`.response-rocket-button[data-reaction="${reaction.reaction}"]`);
