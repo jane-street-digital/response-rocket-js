@@ -8,11 +8,16 @@ export function getPage(siteKey, url)
     fetch(`${url}?${params}`)
         .then(response => response.json())
         .then(data => {
-            const countElement = document.getElementsByClassName('response-rocket-count');
-            for (let i = 0; i < countElement.length; i++) {
-                if (data.reactions > 0) {
-                    countElement[i].innerHTML = data.reactions;
-                }
+            if (data.reactions) {
+                data.reactions.map((reaction) => {
+                    console.log(reaction);
+                  const elements = document.querySelectorAll(`.response-rocket-button[data-reaction="${reaction.reaction}"]`);
+                  for (let i = 0; i < elements.length; i++) {
+                    if (reaction.clicks) {
+                      elements[i].querySelector('span.response-rocket-count').innerHTML = reaction.clicks;
+                    }
+                  }
+                });
             }
         })
         .catch(err => console.error(err));
