@@ -85,9 +85,9 @@ if (responseRocketContainers.length) {
             data.reactions.map((reaction) => {
               elements = document.querySelectorAll(`.response-rocket-button[data-reaction="${reaction.reaction}"]`);
               console.log(elements);
-              elements.map((el) => {
-                el.querySelector('span').innerHTML = reaction.click;
-              })
+              for (let i = 0; i < elements.length; i++) {
+                elements[i].querySelector('span').innerHTML = reaction.click;
+              }
             });
             this.getElementsByTagName('span')[0].innerHTML = data.reactions
           }

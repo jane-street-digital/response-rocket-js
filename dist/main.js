@@ -24,12 +24,12 @@ const g = `
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="rr-w-6 rr-h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
 </svg>
-`, l = document.querySelector("script[data-key]"), h = l.getAttribute("data-key"), a = document.body.classList.contains("darkMode") || l.getAttribute("darkMode"), i = document.getElementsByClassName("response-rocket");
-let u = "https://responserocket.app/api/increment";
-l.getAttribute("data-dev") && (u = "https://responserocket.test/api/increment");
-if (i.length) {
-  for (let t = 0; t < i.length; t++)
-    i[t].innerHTML = `
+`, l = document.querySelector("script[data-key]"), u = l.getAttribute("data-key"), a = document.body.classList.contains("darkMode") || l.getAttribute("darkMode"), p = document.getElementsByClassName("response-rocket");
+let m = "https://responserocket.app/api/increment";
+l.getAttribute("data-dev") && (m = "https://responserocket.test/api/increment");
+if (p.length) {
+  for (let t = 0; t < p.length; t++)
+    p[t].innerHTML = `
       <div class="rr-flex rr-justify-center">
         <div class="rr-flex shrink rr-rounded-full rr-py-2 rr-px-4 rr-justify-center rr-shadow ${a ? "rr-bg-white rr-text-black" : "rr-bg-black rr-text-white"}">
             <button
@@ -71,27 +71,27 @@ if (i.length) {
   let o = !1;
   for (let t = 0; t < n.length; t++)
     n[t].addEventListener("click", function() {
-      const { hash: c, pathname: r } = window.location, m = this.getAttribute("data-reaction");
-      o || fetch(u, {
+      const { hash: c, pathname: r } = window.location, d = this.getAttribute("data-reaction");
+      o || fetch(m, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         mode: "cors",
         body: JSON.stringify({
-          siteKey: h,
+          siteKey: u,
           hash: c,
           pathname: r,
-          reaction: m
+          reaction: d
         })
       }).then((e) => e.json()).then((e) => {
-        console.log(e), o = e.exceededClickLimit, e.reactions && (e.reactions.map((p) => {
-          elements = document.querySelectorAll(`.response-rocket-button[data-reaction="${p.reaction}"]`), console.log(elements), elements.map((d) => {
-            d.querySelector("span").innerHTML = p.click;
-          });
+        console.log(e), o = e.exceededClickLimit, e.reactions && (e.reactions.map((h) => {
+          elements = document.querySelectorAll(`.response-rocket-button[data-reaction="${h.reaction}"]`), console.log(elements);
+          for (let i = 0; i < elements.length; i++)
+            elements[i].querySelector("span").innerHTML = h.click;
         }), this.getElementsByTagName("span")[0].innerHTML = e.reactions);
       }).catch((e) => console.error(e));
     });
   let s = "https://responserocket.app/api/page";
-  l.getAttribute("data-dev") && (s = "https://responserocket.test/api/page"), k(h, s);
+  l.getAttribute("data-dev") && (s = "https://responserocket.test/api/page"), k(u, s);
 }
