@@ -1,9 +1,9 @@
-function k(n, s) {
-  const o = new URLSearchParams({
+function k(n, o) {
+  const s = new URLSearchParams({
     pathname: window.location.pathname,
     siteKey: n
   });
-  fetch(`${s}?${o}`).then((t) => t.json()).then((t) => {
+  fetch(`${o}?${s}`).then((t) => t.json()).then((t) => {
     const c = document.getElementsByClassName("response-rocket-count");
     for (let r = 0; r < c.length; r++)
       t.reactions > 0 && (c[r].innerHTML = t.reactions);
@@ -24,12 +24,12 @@ const g = `
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="rr-w-6 rr-h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
 </svg>
-`, i = document.querySelector("script[data-key]"), h = i.getAttribute("data-key"), a = document.body.classList.contains("darkMode") || i.getAttribute("darkMode"), l = document.getElementsByClassName("response-rocket");
+`, l = document.querySelector("script[data-key]"), h = l.getAttribute("data-key"), a = document.body.classList.contains("darkMode") || l.getAttribute("darkMode"), i = document.getElementsByClassName("response-rocket");
 let u = "https://responserocket.app/api/increment";
-i.getAttribute("data-dev") && (u = "https://responserocket.test/api/increment");
-if (l.length) {
-  for (let t = 0; t < l.length; t++)
-    l[t].innerHTML = `
+l.getAttribute("data-dev") && (u = "https://responserocket.test/api/increment");
+if (i.length) {
+  for (let t = 0; t < i.length; t++)
+    i[t].innerHTML = `
       <div class="rr-flex rr-justify-center">
         <div class="rr-flex shrink rr-rounded-full rr-py-2 rr-px-4 rr-justify-center rr-shadow ${a ? "rr-bg-white rr-text-black" : "rr-bg-black rr-text-white"}">
             <button
@@ -68,11 +68,11 @@ if (l.length) {
         </div>
       `;
   const n = document.getElementsByClassName("response-rocket-button");
-  let s = !1;
+  let o = !1;
   for (let t = 0; t < n.length; t++)
     n[t].addEventListener("click", function() {
       const { hash: c, pathname: r } = window.location, m = this.getAttribute("data-reaction");
-      s || fetch(u, {
+      o || fetch(u, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -85,13 +85,13 @@ if (l.length) {
           reaction: m
         })
       }).then((e) => e.json()).then((e) => {
-        console.log(e), s = e.exceededClickLimit, e.reactions && (e.reactions.map((p) => {
-          elements = this.querySelectorAll(`.response-rocket-button[data-reaction="${p.reaction}"]`), console.log(elements), elements.map((d) => {
+        console.log(e), o = e.exceededClickLimit, e.reactions && (e.reactions.map((p) => {
+          elements = document.querySelectorAll(`.response-rocket-button[data-reaction="${p.reaction}"]`), console.log(elements), elements.map((d) => {
             d.querySelector("span").innerHTML = p.click;
           });
         }), this.getElementsByTagName("span")[0].innerHTML = e.reactions);
       }).catch((e) => console.error(e));
     });
-  let o = "https://responserocket.app/api/page";
-  i.getAttribute("data-dev") && (o = "https://responserocket.test/api/page"), k(h, o);
+  let s = "https://responserocket.app/api/page";
+  l.getAttribute("data-dev") && (s = "https://responserocket.test/api/page"), k(h, s);
 }

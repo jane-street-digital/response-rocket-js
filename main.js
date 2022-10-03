@@ -83,7 +83,7 @@ if (responseRocketContainers.length) {
           exceededClickLimit = data.exceededClickLimit;
           if (data.reactions) {
             data.reactions.map((reaction) => {
-              elements = this.querySelectorAll(`.response-rocket-button[data-reaction="${reaction.reaction}"]`);
+              elements = document.querySelectorAll(`.response-rocket-button[data-reaction="${reaction.reaction}"]`);
               console.log(elements);
               elements.map((el) => {
                 el.querySelector('span').innerHTML = reaction.click;
