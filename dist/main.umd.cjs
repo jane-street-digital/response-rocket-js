@@ -13,7 +13,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="rr-w-6 rr-h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
 </svg>
-`;console.log("Reaction Rocket v1.0.7");const d=document.querySelector("script[data-rocket-key]"),b=d.getAttribute("data-rocket-key"),u=document.body.classList.contains("darkMode")||d.getAttribute("darkMode"),p=document.getElementsByClassName("rocket-widget");let f="https://responserocket.app/api/";if(d.getAttribute("data-dev")&&(f="https://responserocket.test/api/"),p.length){for(let r=0;r<p.length;r++){const e=p[r].dataset.rocketWidget;p[r].innerHTML=`
+`;console.log("Reaction Rocket v1.1");const d=document.querySelector("script[data-rocket-key]"),b=d.getAttribute("data-rocket-key"),u=document.body.classList.contains("darkMode")||d.getAttribute("darkMode"),p=document.getElementsByClassName("rocket-widget");let f="https://responserocket.app/api/";if(d.getAttribute("data-dev")&&(f="https://responserocket.test/api/"),p.length){for(let r=0;r<p.length;r++){const e=p[r].dataset.rocketWidget;p[r].innerHTML=`
       <div class="rr-flex rr-justify-center">
         <div class="rr-flex shrink rr-rounded-full rr-py-2 rr-px-4 rr-justify-center rr-shadow ${u?"rr-bg-white rr-text-black":"rr-bg-black rr-text-white"}">
             <button

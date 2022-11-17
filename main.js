@@ -4,7 +4,7 @@ import './style.css'
 import { getPage } from './getPage';
 import { rocketSvg, smileSvg, heartSvg, thumbsUpSvg } from './svgs';
 
-console.log('Reaction Rocket v1.0.7');
+console.log('Reaction Rocket v1.1');
 
 const me = document.querySelector('script[data-rocket-key]');
 const siteKey = me.getAttribute('data-rocket-key');
